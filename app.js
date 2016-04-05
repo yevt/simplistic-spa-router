@@ -7,19 +7,17 @@ function main() {
 
 function onHashChange(e) {
   var page = window.location.hash.substr(1);
-  console.log('page ===>', page);
   if (page) {
     var url = window.location.origin + '/' + page;
-    console.log('url ===>', url);
-    loadPage(url, showPageContent);
+    loadPage(url);
   }
 }
 
-function loadPage(href, loadedCallback) {
+function loadPage(href) {
   var oReq = new XMLHttpRequest();
 
   oReq.onload = function() {
-    loadedCallback(this.responseText);
+    showPageContent(this.responseText);
   };
 
   oReq.open("get", href, true);
